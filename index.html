@@ -7,17 +7,23 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .kazakh-pattern {
-      background-image: url('https://via.placeholder.com/1500x200?text=Казахский+орнамент');
+      background-image: url('https://images.unsplash.com/photo-1627556710276-7e302e7d0a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); /* Фон с казахским пейзажем */
       background-size: cover;
+      background-position: center;
     }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <!-- Навигация -->
   <nav class="bg-blue-900 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">qazaq.space</h1>
-      <ul class="flex space-x-6">
+    <div class="container mx-auto flex flex-wrap justify-between items-center">
+      <a href="#home" class="text-2xl font-bold">qazaq.space</a>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <ul id="nav-menu" class="hidden md:flex md:space-x-6 w-full md:w-auto mt-4 md:mt-0">
         <li><a href="#home" class="hover:underline">Главная</a></li>
         <li><a href="#guides" class="hover:underline">Путеводители</a></li>
         <li><a href="#culture" class="hover:underline">Культура (скоро)</a></li>
@@ -30,10 +36,10 @@
   </nav>
 
   <!-- Главная секция -->
-  <section id="home" class="kazakh-pattern h-96 flex items-center justify-center text-white">
-    <div class="text-center">
-      <h2 class="text-4xl font-bold mb-4">Добро пожаловать в Казахстан!</h2>
-      <p class="text-lg">Откройте для себя удивительные пейзажи, богатую культуру и гостеприимство.</p>
+  <section id="home" class="kazakh-pattern h-96 flex items-center justify-center text-center">
+    <div>
+      <h2 class="text-4xl font-bold text-yellow-300 mb-4">Добро пожаловать в Казахстан!</h2>
+      <p class="text-lg text-yellow-100">Откройте для себя удивительные пейзажи, богатую культуру и гостеприимство.</p>
       <a href="#guides" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Исследовать</a>
     </div>
   </section>
@@ -44,21 +50,21 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Карточка 1 -->
       <div class="bg-white p-6 rounded-lg shadow-lg">
-        <img src="https://via.placeholder.com/300x200?text=Чарынский+каньон" alt="Чарынский каньон" class="w-full h-48 object-cover rounded">
+        <img src="https://images.unsplash.com/photo-1627556710276-7e302e7d0a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Чарынский каньон" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Чарынский каньон</h3>
         <p class="text-gray-600 mt-2">Уникальный природный памятник, напоминающий Гранд-Каньон. Идеально для походов и фотосессий.</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
       </div>
       <!-- Карточка 2 -->
       <div class="bg-white p-6 rounded-lg shadow-lg">
-        <img src="https://via.placeholder.com/300x200?text=Озеро+Кольсай" alt="Озеро Кольсай" class="w-full h-48 object-cover rounded">
+        <img src="https://images.unsplash.com/photo-1598359260110-6f3fc39ed3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Озеро Кольсай" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Озеро Кольсай</h3>
         <p class="text-gray-600 mt-2">Кристально чистые озёра в горах Тянь-Шаня. Место для уединения и релакса.</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
       </div>
       <!-- Карточка 3 -->
       <div class="bg-white p-6 rounded-lg shadow-lg">
-        <img src="https://via.placeholder.com/300x200?text=Астана" alt="Астана" class="w-full h-48 object-cover rounded">
+        <img src="https://images.unsplash.com/photo-1598359260110-6f3fc39ed3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Астана" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Астана</h3>
         <p class="text-gray-600 mt-2">Современная столица с футуристической архитектурой и богатой культурной жизнью.</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
@@ -95,9 +101,16 @@
   <!-- Футер -->
   <footer class="bg-blue-900 text-white py-8">
     <div class="container mx-auto text-center">
-      <p>&copy; 2025 qazaq.space. Все права защищены.</p>
+      <p>© 2025 qazaq.space. Все права защищены.</p>
       <p class="mt-2">Свяжитесь с нами: <a href="mailto:info@qazaq.space" class="underline">info@qazaq.space</a></p>
     </div>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 </body>
 </html>
