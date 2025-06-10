@@ -21,8 +21,15 @@
     <div class="flex justify-center mb-4">
       <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/H8ay9uI2lV4" frameborder="0" allowfullscreen></iframe>
     </div>
-    <p class="text-sm text-gray-500 mb-4">Видео с официального канала Иманбека: <a href="https://www.youtube.com/@ImanbekMusic" class="underline">YouTube</a></p>
-    <p class="text-gray-600">Следите за выступлениями Иманбека в его <a href="https://www.instagram.com/imanbekmusic" class="underline">Instagram</a>.</p>
+    <p class="text-sm text-gray-500 mb-4">Видео с официального канала Иманбека: <a href="https://www.youtube.com/@imanbekmusic1549" class="underline">YouTube</a></p>
+    <h2 class="text-2xl font-semibold mb-2">Следите за Иманбеком</h2>
+    <div class="flex flex-wrap gap-4 justify-between items-center">
+      <a href="https://www.instagram.com/imanbekmusic" class="text-blue-600 hover:underline">Instagram</a>
+      <a href="https://www.youtube.com/@imanbekmusic1549" class="text-blue-600 hover:underline">YouTube</a>
+      <a href="https://www.tiktok.com/@imanbekmusic" class="text-blue-600 hover:underline">TikTok</a>
+      <a href="https://open.spotify.com/artist/5rGrDvrLOV2VV8SCFVEqux" class="text-blue-600 hover:underline">Spotify</a>
+      <a href="https://www.facebook.com/imanbekmusicofficial" class="text-blue-600 hover:underline">Facebook</a>
+    </div>
   </section>
 
   <div id="footer"></div>
@@ -31,17 +38,25 @@
   <script>
     function loadTemplates() {
       fetch('/templates/header.hbs')
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to load header');
+          return response.text();
+        })
         .then(template => {
           const headerTemplate = Handlebars.compile(template);
           document.getElementById('header').innerHTML = headerTemplate();
-        });
+        })
+        .catch(error => console.error('Error loading header:', error));
       fetch('/templates/footer.hbs')
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to load footer');
+          return response.text();
+        })
         .then(template => {
           const footerTemplate = Handlebars.compile(template);
           document.getElementById('footer').innerHTML = footerTemplate();
-        });
+        })
+        .catch(error => console.error('Error loading footer:', error));
     }
     window.addEventListener('load', loadTemplates);
 
@@ -52,7 +67,7 @@
           "button": { "background": "#2563eb" }
         },
         "content": {
-          "message": "Мы используем cookie для аналитики и персонализированной рекламы. Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.",
+          "message": "Мы используем cookie для аналитики и рекламы. Продолжая, вы соглашаетесь с политикой конфиденциальности.",
           "dismiss": "Принять",
           "deny": "Отклонить",
           "link": "Подробнее",
@@ -85,7 +100,7 @@
 
     function toggleMenu() {
       const menu = document.getElementById('nav-menu');
-      menu.classList.toggle('hidden');
+      if (menu) menu.classList.toggle('hidden');
     }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>

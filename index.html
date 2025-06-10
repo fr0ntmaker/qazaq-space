@@ -20,19 +20,16 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <!-- Хедер -->
   <div id="header"></div>
 
-  <!-- Главная секция -->
   <section id="home" class="kazakh-pattern h-96 flex items-center justify-center text-center">
     <div>
-      <h2 class="text-4xl font-bold text-yellow-300 mb-4">Добро пожаловать в Казахстан!</h2>
-      <p class="text-lg text-yellow-100">Откройте для себя удивительные пейзажи, богатую культуру и гостеприимство.</p>
+      <h2 class="text-4xl font-bold text-white mb-4">Добро пожаловать в Казахстан!</h2>
+      <p class="text-lg text-white">Откройте для себя удивительные пейзажи, богатую культуру и гостеприимство.</p>
       <a href="#guides" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Исследовать</a>
     </div>
   </section>
 
-  <!-- Туристический гид -->
   <section id="guides" class="container mx-auto py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Путеводители по Казахстану</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -60,7 +57,6 @@
     </div>
   </section>
 
-  <!-- Культура -->
   <section id="culture" class="container mx-auto py-12 bg-gray-200">
     <h2 class="text-3xl font-bold text-center mb-8">Культура Казахстана</h2>
     <p class="text-center text-gray-600">Познакомьтесь с музыкальными артистами Казахстана, такими как Димаш Кудайберген, Данелия Тулешова и MC Иманбек.</p>
@@ -71,7 +67,6 @@
     </div>
   </section>
 
-  <!-- Заглушки -->
   <section id="diaspora" class="container mx-auto py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Казахская диаспора</h2>
     <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
@@ -92,15 +87,11 @@
     <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
-  <!-- Футер -->
   <div id="footer"></div>
 
-  <!-- Скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
   <script>
-    // Исправленный Handlebars
     function loadTemplates() {
-      // Хедер
       fetch('/templates/header.hbs')
         .then(response => {
           if (!response.ok) throw new Error('Failed to load header');
@@ -112,7 +103,6 @@
         })
         .catch(error => {
           console.error('Error loading header:', error);
-          // Фаллбэк: статический хедер
           document.getElementById('header').innerHTML = `
             <nav class="bg-blue-900 text-white p-4">
               <div class="container mx-auto flex justify-between items-center">
@@ -126,8 +116,6 @@
             </nav>
           `;
         });
-
-      // Футер
       fetch('/templates/footer.hbs')
         .then(response => {
           if (!response.ok) throw new Error('Failed to load footer');
@@ -141,7 +129,6 @@
     }
     window.addEventListener('load', loadTemplates);
 
-    // CookieConsent
     window.addEventListener("load", function(){
       window.cookieconsent.initialise({
         "palette": {
@@ -186,8 +173,8 @@
     }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 </html>
