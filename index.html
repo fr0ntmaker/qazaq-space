@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="description" content="Explore Kazakhstan's culture, tourism, and music on qazaq.space">
+  <meta name="keywords" content="Kazakhstan tourism, Dimash Qudaibergen, Daneliya Tuleshova, Imanbek">
   <title>qazaq.space - Туристический гид по Казахстану</title>
+  <link rel="canonical" href="https://qazaq.space">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
   <style>
     .kazakh-pattern {
       background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1627556710276-7e302e7d0a36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
@@ -14,26 +20,8 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <!-- Навигация -->
-  <nav class="bg-blue-900 text-white p-4">
-    <div class="container mx-auto flex flex-wrap justify-between items-center">
-      <a href="#home" class="text-2xl font-bold">qazaq.space</a>
-      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
-      <ul id="nav-menu" class="hidden md:flex md:space-x-6 w-full md:w-auto mt-4 md:mt-0">
-        <li><a href="#home" class="hover:underline">Главная</a></li>
-        <li><a href="#guides" class="hover:underline">Путеводители</a></li>
-        <li><a href="#culture" class="hover:underline">Культура (скоро)</a></li>
-        <li><a href="#diaspora" class="hover:underline">Диаспора (скоро)</a></li>
-        <li><a href="#education" class="hover:underline">Образование (скоро)</a></li>
-        <li><a href="#creativity" class="hover:underline">Творчество (скоро)</a></li>
-        <li><a href="#tech" class="hover:underline">Технологии (скоро)</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Хедер будет вставлен через Handlebars -->
+  <div id="header"></div>
 
   <!-- Главная секция -->
   <section id="home" class="kazakh-pattern h-96 flex items-center justify-center text-center">
@@ -46,39 +34,43 @@
 
   <!-- Туристический гид -->
   <section id="guides" class="container mx-auto py-12">
-    <h2 class="text-3xl font-bold text-center mb-8">Путеводители по Казахстану</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Путевод</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Карточка 1: Чарынский каньон -->
-      <div class="bg-white p-6 rounded-lg shadow-lg">
+      <div class="bg-white p-3 rounded-lg shadow">
         <img src="https://images.unsplash.com/photo-1556881798-ea9705321743?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Чарынский каньон" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Чарынский каньон</h3>
-        <p class="text-gray-600 mt-2">Уникальный природный памятник, напоминающий Гранд-Каньон. Идеально для походов и фотосессий.</p>
-        <p class="text-sm text-gray-500 mt-2">Photo by Jakob Owens on Unsplash</p>
+        <p class="text-gray-600 mt-2">Уникальный природный памятник, напоминающий Гранд-Каньон.</p>
+        <p class="text-sm text-gray-500 mt-2">Photo by Jakob Owens</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
       </div>
-      <!-- Карточка 2: Озеро Кайынды -->
       <div class="bg-white p-6 rounded-lg shadow-lg">
         <img src="https://images.unsplash.com/photo-1598359260110-6f3fc39ed3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Озеро Кайынды" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Озеро Кайынды</h3>
-        <p class="text-gray-600 mt-2">Уникальное озеро с затопленными елями, созданное землетрясением. Идеально для любителей природы.</p>
-        <p class="text-sm text-gray-500 mt-2">Photo by Yerbol Tleu on Unsplash</p>
+        <p class="text-gray-600 mt-2">Уникальное озеро с затопленными елями.</p>
+        <p class="text-sm text-gray-500 mt-2">Photo by Yerbol Tleu</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
+      </p>
       </div>
-      <!-- Карточка 3: Астана -->
       <div class="bg-white p-6 rounded-lg shadow-lg">
-        <img src="https://images.unsplash.com/photo-1581793380789-e9cf3011afbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Астана" class="w-full h-48 object-cover rounded">
-        <h3 class="text-xl font-semibold mt-4">Астана</h3>
-        <p class="text-gray-600 mt-2">Современная столица с футуристической архитектурой и богатой культурной жизнью.</p>
-        <p class="text-sm text-gray-500 mt-2">Photo by Nurlan Kaldybay on Unsplash</p>
+        <img src="https://images.unsplash.com/photo-1581793380789-ecf3011afbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Аста" class="w-full h-48 object-cover rounded">
+        <h3 class="text-xl font-semibold mt-4">Аста</h3>
+        <p class="text-gray-600 mt-2">Современная столица с футуристической архитектурой.</p>
+        <p class="text-sm text-gray-500 mt-2">Photo by Nurlan Kaldybay</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
-      </div>
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Заглушки для других разделов -->
+  <!-- Заглушка для других разделов -->
   <section id="culture" class="container mx-auto py-12 bg-gray-200">
-    <h2 class="text-3xl font-bold text-center mb-8">Культура Казахстана</h2>
-    <p class="text-center text-gray-600">Этот раздел скоро появится! Следите за обновлениями.</p>
+    <h2 class="text-2xl font-bold text-center mb-8">Культура Казахстан</h2>
+    <p class="text-center text-gray-600">Познакомьтесь с музыкальными артистами Казахстан, такими как Димаш Кудайбергенов, Данелия Тулешова и MC Иманбек.</p>
+    <div class="flex justify-center gap-4">
+      <a href="/dimash" class="text-blue-600 hover:underline">Димаш Кудайберген</a>
+      <a href="/daneliya" class="text-blue-600 hover:underline">Данелия Тулешова</a>
+      <a href="/imanbek" class="text-blue-600 hover:underline">MC Иманбек</a>
+    </div>
   </section>
 
   <section id="diaspora" class="container mx-auto py-12">
@@ -88,33 +80,91 @@
 
   <section id="education" class="container mx-auto py-12 bg-gray-200">
     <h2 class="text-3xl font-bold text-center mb-8">Образование</h2>
-    <p class="text-center text-gray-600">Этот раздел скоро появится! Следите за обновлениями.</p>
+    <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
   <section id="creativity" class="container mx-auto py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Творчество</h2>
-    <p class="text-center text-gray-600">Этот раздел скоро появится! Следите за обновлениями.</p>
+    <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
   <section id="tech" class="container mx-auto py-12 bg-gray-200">
     <h2 class="text-3xl font-bold text-center mb-8">Технологии</h2>
-    <p class="text-center text-gray-600">Этот раздел скоро появится! Следите за обновлениями.</p>
+    <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
-  <!-- Футер -->
-  <footer class="bg-blue-900 text-white py-8">
-    <div class="container mx-auto text-center">
-      <p>© 2025 qazaq.space. Все права защищены.</p>
-      <p class="mt-2">Свяжитесь с нами: <a href="mailto:info@qazaq.space" class="underline">info@qazaq.space</a></p>
-      <p class="mt-2 text-sm">Фон главной секции: Photo by Yerbol Tleu on Unsplash</p>
-    </div>
-  </footer>
+  <!-- Футер будет вставлен через Handlebars -->
+  <div id="footer"></div>
 
+  <!-- CookieConsent и AdSense -->
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
   <script>
+    // Загрузка шаблонов
+    function loadTemplates() {
+      fetch('/templates/header.hbs')
+        .then(response => response.textContent())
+        .then(template => {
+          const headerTemplate = Handlebars.compile(template);
+          document.getElementById('header').innerHTML = headerTemplate();
+        });
+      fetch('/templates/footer.hbs')
+        .then(response => response.text())
+        .then(template => {
+          const footerTemplate = Handlebars.compile(template);
+          document.getElementById('footer').innerHTML = footerTemplate();
+        });
+    }
+    window.addEventListener('load', loadTemplates);
+
+    // CookieConsent
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": { "background": "#1e3a8a" },
+          "button": { "background": "#2563eb" }
+        },
+        "content": {
+          "message": "Мы используем cookie для аналитики и персонализированной рекламы. Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.",
+          "dismiss": "Принять",
+          "deny": "Отклонить",
+          "link": "Подробнее",
+          "href": "/privacy"
+        },
+        onStatusChange: function(status) {
+          if (status === 'allow') {
+            // Google Analytics
+            (function() {
+              var s = document.createElement('script');
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+              s.async = true;
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            })();
+            // Google AdSense
+            (function() {
+              var s = document.createElement('script');
+              s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX';
+              s.async = true;
+              s.setAttribute('data-cookieconsent', 'advertising');
+              document.head.appendChild(s);
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            })();
+          }
+        }
+      });
+    });
+
     function toggleMenu() {
       const menu = document.getElementById('nav-menu');
       menu.classList.toggle('hidden');
     }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 </body>
 </html>

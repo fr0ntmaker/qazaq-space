@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>Политика конфиденциальности - qazaq.space</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div id="header"></div>
+
+  <div class="container mx-auto py-12">
+    <h1 class="text-3xl font-bold mb-4">Политика конфиденциальности</h1>
+    <p class="text-gray-600">На сайте qazaq.space мы используем cookie и аналитические инструменты (например, Google Analytics) для подсчёта посещений и улучшения работы сайта. Также мы используем Google AdSense для показа персонализированной рекламы. Эти данные собираются только с вашего согласия через баннер cookie.</p>
+    <p class="text-gray-600 mt-4">Google AdSense и Google Analytics могут собирать информацию, такую как IP-адреса, данные о поведении на сайте и идентификаторы cookie, чтобы предоставлять релевантные объявления и аналитику. Вы можете отказаться от cookie, нажав «Отклонить» в баннере, и в этом случае персонализированная реклама и аналитика не будут использоваться.</p>
+    <p class="text-gray-600 mt-4">Подробнее о том, как Google использует данные, можно узнать <a href="https://policies.google.com/technologies/partner-sites" class="underline" target="_blank">здесь</a>.</p>
+    <p class="text-gray-600 mt-4">Если у вас есть вопросы, свяжитесь с нами: <a href="mailto:info@qazaq.space" class="underline">info@qazaq.space</a>.</p>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    function loadTemplates() {
+      fetch('/templates/header.hbs')
+        .then(response => response.text())
+        .then(template => {
+          const headerTemplate = Handlebars.compile(template);
+          document.getElementById('header').innerHTML = headerTemplate();
+        });
+      fetch('/templates/footer.hbs')
+        .then(response => response.text())
+        .then(template => {
+          const footerTemplate = Handlebars.compile(template);
+          document.getElementById('footer').innerHTML = footerTemplate();
+        });
+    }
+    window.addEventListener('load', loadTemplates);
+
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": { "background": "#1e3a8a" },
+          "button": { "background": "#2563eb" }
+        },
+        "content": {
+          "message": "Мы используем cookie для аналитики и персонализированной рекламы. Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.",
+          "dismiss": "Принять",
+          "deny": "Отклонить",
+          "link": "Подробнее",
+          "href": "/privacy"
+        }
+      });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

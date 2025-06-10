@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="description" content="Discover Imanbek, Kazakhstan's Grammy-winning DJ, on qazaq.space">
+  <meta name="keywords" content="Imanbek, Kazakhstan music, Grammy, DJ">
+  <title>MC Иманбек - qazaq.space</title>
+  <link rel="canonical" href="https://qazaq.space/imanbek">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div id="header"></div>
+
+  <section class="container mx-auto py-12">
+    <h1 class="text-3xl font-bold mb-4">MC Иманбек</h1>
+    <p class="text-gray-600 mb-4">Иманбек Зейкенов, известный как MC Иманбек, — казахстанский диджей и продюсер, получивший премию Grammy в 2021 году за ремикс трека «Roses». Его музыка покорила мировые чарты и клубные сцены.</p>
+    <div class="flex justify-center mb-4">
+      <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/H8ay9uI2lV4" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="text-sm text-gray-500 mb-4">Видео с официального канала Иманбека: <a href="https://www.youtube.com/@ImanbekMusic" class="underline">YouTube</a></p>
+    <p class="text-gray-600">Следите за выступлениями Иманбека в его <a href="https://www.instagram.com/imanbekmusic" class="underline">Instagram</a>.</p>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    function loadTemplates() {
+      fetch('/templates/header.hbs')
+        .then(response => response.text())
+        .then(template => {
+          const headerTemplate = Handlebars.compile(template);
+          document.getElementById('header').innerHTML = headerTemplate();
+        });
+      fetch('/templates/footer.hbs')
+        .then(response => response.text())
+        .then(template => {
+          const footerTemplate = Handlebars.compile(template);
+          document.getElementById('footer').innerHTML = footerTemplate();
+        });
+    }
+    window.addEventListener('load', loadTemplates);
+
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": { "background": "#1e3a8a" },
+          "button": { "background": "#2563eb" }
+        },
+        "content": {
+          "message": "Мы используем cookie для аналитики и персонализированной рекламы. Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.",
+          "dismiss": "Принять",
+          "deny": "Отклонить",
+          "link": "Подробнее",
+          "href": "/privacy"
+        },
+        onStatusChange: function(status) {
+          if (status === 'allow') {
+            (function() {
+              var s = document.createElement('script');
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+              s.async = true;
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            })();
+            (function() {
+              var s = document.createElement('script');
+              s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX';
+              s.async = true;
+              s.setAttribute('data-cookieconsent', 'advertising');
+              document.head.appendChild(s);
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            })();
+          }
+        }
+      });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</body>
+</html>
