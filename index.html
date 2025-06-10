@@ -20,7 +20,7 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <!-- Хедер будет вставлен через Handlebars -->
+  <!-- Хедер -->
   <div id="header"></div>
 
   <!-- Главная секция -->
@@ -34,9 +34,9 @@
 
   <!-- Туристический гид -->
   <section id="guides" class="container mx-auto py-12">
-    <h2 class="text-3xl font-bold text-center mb-8">Путевод</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Путеводители по Казахстану</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-3 rounded-lg shadow">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
         <img src="https://images.unsplash.com/photo-1556881798-ea9705321743?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Чарынский каньон" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Чарынский каньон</h3>
         <p class="text-gray-600 mt-2">Уникальный природный памятник, напоминающий Гранд-Каньон.</p>
@@ -47,35 +47,34 @@
         <img src="https://images.unsplash.com/photo-1598359260110-6f3fc39ed3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Озеро Кайынды" class="w-full h-48 object-cover rounded">
         <h3 class="text-xl font-semibold mt-4">Озеро Кайынды</h3>
         <p class="text-gray-600 mt-2">Уникальное озеро с затопленными елями.</p>
-        <p class="text-sm text-gray-500 mt-2">Photo by Yerbol Tleu</p>
+        <p class="text-sm text-gray-500 mt-2">Photo by Yerbol</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
-      </p>
       </div>
       <div class="bg-white p-6 rounded-lg shadow-lg">
-        <img src="https://images.unsplash.com/photo-1581793380789-ecf3011afbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Аста" class="w-full h-48 object-cover rounded">
-        <h3 class="text-xl font-semibold mt-4">Аста</h3>
-        <p class="text-gray-600 mt-2">Современная столица с футуристической архитектурой.</p>
+        <img src="https://images.unsplash.com/photo-1581793381238-ea9703f1afbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Астана" class="w-full h-48 object-cover rounded">
+        <h3 class="text-xl font-semibold mt-4">Астана</h3>
+        <p class="text-gray-600 mb-2">Современная столица с современной архитектурой.</p>
         <p class="text-sm text-gray-500 mt-2">Photo by Nurlan Kaldybay</p>
         <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Подробнее</a>
-      </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Заглушка для других разделов -->
+  <!-- Культура -->
   <section id="culture" class="container mx-auto py-12 bg-gray-200">
-    <h2 class="text-2xl font-bold text-center mb-8">Культура Казахстан</h2>
-    <p class="text-center text-gray-600">Познакомьтесь с музыкальными артистами Казахстан, такими как Димаш Кудайбергенов, Данелия Тулешова и MC Иманбек.</p>
-    <div class="flex justify-center gap-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Культура Казахстана</h2>
+    <p class="text-center text-gray-600">Познакомьтесь с музыкальными артистами Казахстана, такими как Димаш Кудайберген, Данелия Тулешова и MC Иманбек.</p>
+    <div class="flex justify-center gap-4 mt-4">
       <a href="/dimash" class="text-blue-600 hover:underline">Димаш Кудайберген</a>
       <a href="/daneliya" class="text-blue-600 hover:underline">Данелия Тулешова</a>
       <a href="/imanbek" class="text-blue-600 hover:underline">MC Иманбек</a>
     </div>
   </section>
 
+  <!-- Заглушки -->
   <section id="diaspora" class="container mx-auto py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Казахская диаспора</h2>
-    <p class="text-center text-gray-600">Этот раздел скоро появится! Следите за обновлениями.</p>
+    <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
   <section id="education" class="container mx-auto py-12 bg-gray-200">
@@ -93,26 +92,52 @@
     <p class="text-center text-gray-600">Этот раздел скоро появится!</p>
   </section>
 
-  <!-- Футер будет вставлен через Handlebars -->
+  <!-- Футер -->
   <div id="footer"></div>
 
-  <!-- CookieConsent и AdSense -->
+  <!-- Скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
   <script>
-    // Загрузка шаблонов
+    // Исправленный Handlebars
     function loadTemplates() {
+      // Хедер
       fetch('/templates/header.hbs')
-        .then(response => response.textContent())
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to load header');
+          return response.text();
+        })
         .then(template => {
           const headerTemplate = Handlebars.compile(template);
           document.getElementById('header').innerHTML = headerTemplate();
+        })
+        .catch(error => {
+          console.error('Error loading header:', error);
+          // Фаллбэк: статический хедер
+          document.getElementById('header').innerHTML = `
+            <nav class="bg-blue-900 text-white p-4">
+              <div class="container mx-auto flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">qazaq.space</a>
+                <ul class="flex space-x-6">
+                  <li><a href="/" class="hover:underline">Главная</a></li>
+                  <li><a href="/#guides" class="hover:underline">Путеводители</a></li>
+                  <li><a href="/#culture" class="hover:underline">Культура</a></li>
+                </ul>
+              </div>
+            </nav>
+          `;
         });
+
+      // Футер
       fetch('/templates/footer.hbs')
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) throw new Error('Failed to load footer');
+          return response.text();
+        })
         .then(template => {
           const footerTemplate = Handlebars.compile(template);
           document.getElementById('footer').innerHTML = footerTemplate();
-        });
+        })
+        .catch(error => console.error('Error loading footer:', error));
     }
     window.addEventListener('load', loadTemplates);
 
@@ -124,7 +149,7 @@
           "button": { "background": "#2563eb" }
         },
         "content": {
-          "message": "Мы используем cookie для аналитики и персонализированной рекламы. Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.",
+          "message": "Мы используем cookie для аналитики и рекламы. Продолжая, вы соглашаетесь с политикой конфиденциальности.",
           "dismiss": "Принять",
           "deny": "Отклонить",
           "link": "Подробнее",
@@ -132,7 +157,6 @@
         },
         onStatusChange: function(status) {
           if (status === 'allow') {
-            // Google Analytics
             (function() {
               var s = document.createElement('script');
               s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
@@ -143,7 +167,6 @@
               gtag('js', new Date());
               gtag('config', 'G-XXXXXXXXXX');
             })();
-            // Google AdSense
             (function() {
               var s = document.createElement('script');
               s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX';
@@ -159,7 +182,7 @@
 
     function toggleMenu() {
       const menu = document.getElementById('nav-menu');
-      menu.classList.toggle('hidden');
+      if (menu) menu.classList.toggle('hidden');
     }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
