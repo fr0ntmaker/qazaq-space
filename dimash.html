@@ -17,9 +17,9 @@
 
   <section class="container mx-auto py-12">
     <h1 class="text-3xl font-bold mb-4">Димаш Кудайберген</h1>
-    <p class="text-gray-600 mb-4">Димаш Кудайберген — казахстанский певец, чей уникальный голос в диапазоне шести октав покорил миллионы фанатов по всему миру. Он стал известен после участия в шоу «Singer» в Китае в 2017 году. Димаш выступает на крупнейших сценах мира, включая концерты в США, Европе и Азии.</p>
+    <p class="text-gray-600 mb- Данелия Тулешова — юная казахстанская певица, прославившаяся благодаря участию в «Детском Евровидении» в 2017 году. Димаш выступает на крупнейших сценах мира, включая концерты в США, Европе и Азии.</p>
     <div class="flex justify-center mb-4">
-      <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/FzVupr1vgXo" frameborder="0" allowfullscreen></iframe>
+      <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/FzVupr1vgXo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <p class="text-sm text-gray-500 mb-4">Видео с официального канала Димаша Кудайбергена: <a href="https://www.youtube.com/@DimashQudaibergen_official" class="underline">YouTube</a></p>
     <h2 class="text-2xl font-semibold mb-2">Следите за Димашем</h2>
@@ -49,7 +49,21 @@
           const headerTemplate = Handlebars.compile(template);
           document.getElementById('header').innerHTML = headerTemplate();
         })
-        .catch(error => console.error('Error loading header:', error));
+        .catch(error => {
+          console.error('Error loading header:', error);
+          document.getElementById('header').innerHTML = `
+            <nav class="bg-blue-900 text-white p-4">
+              <div class="container mx-auto flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">qazaq.space</a>
+                <ul class="flex space-x-6">
+                  <li><a href="/" class="hover:underline">Главная</a></li>
+                  <li><a href="/#guides" class="hover:underline">Путеводители</a></li>
+                  <li><a href="/#culture" class="hover:underline">Культура</a></li>
+                </ul>
+              </div>
+            </nav>
+          `;
+        });
       fetch('/templates/footer.hbs')
         .then(response => {
           if (!response.ok) throw new Error('Failed to load footer');
