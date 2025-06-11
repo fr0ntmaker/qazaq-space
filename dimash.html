@@ -10,12 +10,23 @@
   <link rel="canonical" href="https://qazaq.space/dimash">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Note: For production, install Tailwind CSS via npm and use CLI/PostCSS: https://tailwindcss.com/docs/installation -->
   <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .content {
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <div id="header"></div>
 
-  <section class="container mx-auto py-12">
+  <div class="content container mx-auto py-12">
     <h1 class="text-3xl font-bold mb-4">Димаш Кудайберген</h1>
     <p class="text-gray-600 mb-4">Димаш Кудайберген — казахстанский певец, чей уникальный голос в диапазоне шести октав покорил миллионы фанатов по всему миру. Он стал известен после участия в шоу «Singer» в Китае в 2017 году. Димаш выступает на крупнейших сценах мира, включая концерты в США, Европе и Азии.</p>
     <div class="flex flex-col md:flex-row md:gap-6 mb-4 items-start">
@@ -35,7 +46,7 @@
       </div>
     </div>
     <p class="text-sm text-gray-500 mb-4">Видео с официального канала Димаша Кудайбергена: <a href="https://www.youtube.com/@DimashQudaibergen_official" class="underline" target="_blank" rel="noopener noreferrer">YouTube</a></p>
-  </section>
+  </div>
 
   <div id="footer"></div>
 
@@ -44,7 +55,10 @@
     function loadTemplates() {
       fetch('/templates/header.hbs')
         .then(response => {
-          if (!response.ok) throw new Error('Failed to load header');
+          if (!response.ok) {
+            console.error('Failed to fetch header.hbs:', response.status, response.statusText);
+            throw new Error('Failed to load header');
+          }
           return response.text();
         })
         .then(template => {
@@ -68,14 +82,19 @@
         });
       fetch('/templates/footer.hbs')
         .then(response => {
-          if (!response.ok) throw new Error('Failed to load footer');
+          if (!response.ok) {
+            console.error('Failed to fetch footer.hbs:', response.status, response.statusText);
+            throw new Error('Failed to load footer');
+          }
           return response.text();
         })
         .then(template => {
           const footerTemplate = Handlebars.compile(template);
           document.getElementById('footer').innerHTML = footerTemplate();
         })
-        .catch(error => console.error('Error loading footer:', error));
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
     }
     window.addEventListener('load', loadTemplates);
 
@@ -106,7 +125,7 @@
             })();
             (function() {
               var s = document.createElement('script');
-              s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX';
+              s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX';
               s.async = true;
               s.setAttribute('data-cookieconsent', 'advertising');
               document.head.appendChild(s);
@@ -122,7 +141,7 @@
       if (menu) menu.classList.toggle('hidden');
     }
   </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script async src="https://www.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
