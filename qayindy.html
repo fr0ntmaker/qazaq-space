@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Озеро Каинды - Затопленный лес Казахстана | Qazaq.space</title>
+    <meta name="description" content="Озеро Каинды - уникальное горное озеро с затопленным лесом в Казахстане. Информация для туристов, как добраться, лучшее время для посещения.">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9194729997950401" crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #00B2E3;
+            --primary-gold: #FFD700;
+            --dark-blue: #003366;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .lang-switcher button {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        
+        .lang-switcher button:hover,
+        .lang-switcher button.active {
+            background: white;
+            color: var(--dark-blue);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1537533105673-a805d3c18e02?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        /* Info Section */
+        .info-section {
+            padding: 3rem 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .description {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .description h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .description p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* Quick Facts */
+        .quick-facts {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .quick-facts h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .fact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 0.8rem;
+        }
+        
+        .fact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .fact-text {
+            color: var(--text-light);
+        }
+        
+        /* Travel Info */
+        .travel-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .travel-section h2 {
+            color: var(--dark-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .travel-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .travel-card h4 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .travel-card ul {
+            list-style: none;
+            color: var(--text-light);
+        }
+        
+        .travel-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .travel-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Qazaq.space</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#celebrities">Знаменитости</a></li>
+                    <li><a href="index.html#nature">Природа</a></li>
+                    <li><a href="index.html#culture">Культура</a></li>
+                    <li><a href="index.html#history">История</a></li>
+                    <li class="lang-switcher">
+                        <button class="active" onclick="switchLang('ru')">RU</button>
+                        <button onclick="switchLang('en')">EN</button>
+                        <button onclick="switchLang('kz')">KZ</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Озеро Каинды</h1>
+                <p>Мистическое озеро с затопленным лесом</p>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section container">
+            <div class="info-grid">
+                <div class="description">
+                    <h2>О озере Каинды</h2>
+                    <p>
+                        Озеро Каинды — одно из самых загадочных и красивых мест Казахстана, расположенное в ущелье 
+                        Кунгей-Алатау на высоте 1867 метров над уровнем моря. Название "Каинды" переводится с 
+                        казахского как "изобилующее березами", хотя главная достопримечательность озера — это 
+                        затопленные ели.
+                    </p>
+                    <p>
+                        Озеро образовалось в 1911 году в результате сильного землетрясения, вызвавшего крупный 
+                        оползень. Горная порода перекрыла ущелье, создав естественную плотину, и вода затопила 
+                        еловый лес. Стволы елей, торчащие из изумрудной воды, создают сюрреалистический пейзаж, 
+                        особенно впечатляющий в туманную погоду.
+                    </p>
+                    <p>
+                        Вода в озере имеет удивительный бирюзовый цвет благодаря известковым отложениям. 
+                        Температура воды даже летом не превышает 6°C, что помогло сохранить затопленные деревья. 
+                        Под водой можно увидеть целый лес с ветвями и хвоей — популярное место для дайвинга.
+                    </p>
+                </div>
+                
+                <div class="quick-facts">
+                    <h3>📍 Краткая информация</h3>
+                    <div class="fact-item">
+                        <span class="fact-icon">🏔️</span>
+                        <span class="fact-text">Высота: 1867 м</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-icon">📏</span>
+                        <span class="fact-text">Длина: 400 м</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-icon">🌊</span>
+                        <span class="fact-text">Глубина: до 30 м</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-icon">🗺️</span>
+                        <span class="fact-text">280 км от Алматы</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-icon">🌡️</span>
+                        <span class="fact-text">Температура воды: 6°C</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Travel Info -->
+            <div class="travel-section">
+                <h2>🗺️ Информация для туристов</h2>
+                <div class="travel-grid">
+                    <div class="travel-card">
+                        <h4>🚗 Как добраться</h4>
+                        <ul>
+                            <li>На автомобиле через село Саты</li>
+                            <li>Последние 12 км - грунтовая дорога</li>
+                            <li>Рекомендуется внедорожник</li>
+                            <li>Экскурсионные туры из Алматы</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="travel-card">
+                        <h4>🏕️ Что важно знать</h4>
+                        <ul>
+                            <li>Лучшее время: июнь-сентябрь</li>
+                            <li>Вход бесплатный</li>
+                            <li>Можно разбить палатку</li>
+                            <li>Купание очень холодное</li>
+                            <li>Популярно для дайвинга</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="travel-card">
+                        <h4>📋 Что взять с собой</h4>
+                        <ul>
+                            <li>Теплую одежду (даже летом)</li>
+                            <li>Треккинговую обувь</li>
+                            <li>Фотоаппарат</li>
+                            <li>Запас еды и воды</li>
+                            <li>Снаряжение для кемпинга</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Space -->
+        <div class="container" style="margin: 3rem auto; text-align: center; min-height: 100px; background: #f0f0f0; padding: 2rem; border-radius: 8px;">
+            <!-- Google AdSense будет здесь -->
+            <p style="color: #999;">Место для рекламы</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О проекте</h3>
+                    <p>Qazaq.space - ваш гид по удивительному миру Казахстана. Мы рассказываем о культуре, природе и людях этой прекрасной страны.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Разделы</h3>
+                    <ul>
+                        <li><a href="index.html#celebrities">Знаменитости</a></li>
+                        <li><a href="index.html#nature">Природа</a></li>
+                        <li><a href="index.html#culture">Культура</a></li>
+                        <li><a href="index.html#history">История</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="mailto:info@qazaq.space">info@qazaq.space</a></li>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Сотрудничество</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Qazaq.space. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switcher
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            console.log('Switching to language:', lang);
+        }
+    </script>
+</body>
+</html>
