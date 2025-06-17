@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qazaq.space - Откройте для себя Казахстан</title>
+    <meta name="description" content="Исследуйте богатую культуру, историю и природу Казахстана. Узнайте о знаменитостях, достопримечательностях и традициях.">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9194729997950401" crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #00B2E3;
+            --primary-gold: #FFD700;
+            --dark-blue: #003366;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: "🇰🇿";
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .lang-switcher button {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        
+        .lang-switcher button:hover,
+        .lang-switcher button.active {
+            background: white;
+            color: var(--dark-blue);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 3rem 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, var(--bg-light), transparent);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Section Styles */
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+        
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .card-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+        
+        .card-link:hover {
+            gap: 0.8rem;
+        }
+        
+        .card-link::after {
+            content: '→';
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">Qazaq.space</a>
+                <ul class="nav-links">
+                    <li><a href="#celebrities">Знаменитости</a></li>
+                    <li><a href="#nature">Природа</a></li>
+                    <li><a href="#culture">Культура</a></li>
+                    <li><a href="#history">История</a></li>
+                    <li class="lang-switcher">
+                        <button class="active" onclick="switchLang('ru')">RU</button>
+                        <button onclick="switchLang('en')">EN</button>
+                        <button onclick="switchLang('kz')">KZ</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Добро пожаловать в Казахстан</h1>
+            <p>Откройте для себя страну бескрайних степей, величественных гор и богатой культуры</p>
+        </section>
+
+        <!-- Celebrities Section -->
+        <section id="celebrities" class="section">
+            <div class="section-header">
+                <h2>Звезды Казахстана</h2>
+                <p>Талантливые артисты, покорившие мировую сцену</p>
+            </div>
+            
+            <div class="card-grid">
+                <!-- Dimash Card -->
+                <article class="card" onclick="location.href='dimash.html'">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=250&fit=crop" alt="Димаш Кудайберген" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Димаш Кудайберген</h3>
+                        <p class="card-description">Феноменальный вокалист с 6-октавным диапазоном, покоривший сердца миллионов</p>
+                        <a href="dimash.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Daneliya Card -->
+                <article class="card" onclick="location.href='daneliya.html'">
+                    <img src="https://images.unsplash.com/photo-1483641611661-2e70b105cddb?w=400&h=250&fit=crop" alt="Данэлия Тулешова" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Данэлия Тулешова</h3>
+                        <p class="card-description">Юная звезда, финалистка America's Got Talent и The Voice Kids</p>
+                        <a href="daneliya.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Imanbek Card -->
+                <article class="card" onclick="location.href='imanbek.html'">
+                    <img src="https://images.unsplash.com/photo-1571266028243-d220c6a8d7e7?w=400&h=250&fit=crop" alt="Иманбек" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Иманбек</h3>
+                        <p class="card-description">Обладатель Grammy, создатель ремикса "Roses", покоривший мировые чарты</p>
+                        <a href="imanbek.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Nature Section -->
+        <section id="nature" class="section">
+            <div class="section-header">
+                <h2>Природные чудеса</h2>
+                <p>Уникальные ландшафты и захватывающие пейзажи</p>
+            </div>
+            
+            <div class="card-grid">
+                <!-- Charyn Canyon Card -->
+                <article class="card" onclick="location.href='charyn.html'">
+                    <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=400&h=250&fit=crop" alt="Чарынский каньон" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Чарынский каньон</h3>
+                        <p class="card-description">Грандиозный каньон с красными скалами, напоминающий Гранд-Каньон</p>
+                        <a href="charyn.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Kaindy Lake Card -->
+                <article class="card" onclick="location.href='kaindy.html'">
+                    <img src="https://images.unsplash.com/photo-1537533105673-a805d3c18e02?w=400&h=250&fit=crop" alt="Озеро Каинды" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Озеро Каинды</h3>
+                        <p class="card-description">Мистическое озеро с затопленным лесом в горах Тянь-Шаня</p>
+                        <a href="kaindy.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Kolsai Lakes Card -->
+                <article class="card" onclick="location.href='kolsai.html'">
+                    <img src="https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=400&h=250&fit=crop" alt="Кольсайские озера" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Кольсайские озера</h3>
+                        <p class="card-description">Жемчужины Северного Тянь-Шаня - три изумрудных горных озера</p>
+                        <a href="kolsai.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Singing Dunes Card -->
+                <article class="card" onclick="location.href='singing-dunes.html'">
+                    <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&h=250&fit=crop" alt="Поющие барханы" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Поющие барханы</h3>
+                        <p class="card-description">Уникальное природное явление - песчаные дюны, издающие мелодичные звуки</p>
+                        <a href="singing-dunes.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+
+                <!-- Astana Card -->
+                <article class="card" onclick="location.href='astana.html'">
+                    <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=250&fit=crop" alt="Астана" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Астана</h3>
+                        <p class="card-description">Современная столица с футуристической архитектурой посреди степи</p>
+                        <a href="astana.html" class="card-link">Узнать больше</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Ad Space -->
+        <div style="margin: 3rem 0; text-align: center; min-height: 100px; background: #f0f0f0; padding: 2rem; border-radius: 8px;">
+            <!-- Google AdSense будет здесь -->
+            <p style="color: #999;">Место для рекламы</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О проекте</h3>
+                    <p>Qazaq.space - ваш гид по удивительному миру Казахстана. Мы рассказываем о культуре, природе и людях этой прекрасной страны.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Разделы</h3>
+                    <ul>
+                        <li><a href="#celebrities">Знаменитости</a></li>
+                        <li><a href="#nature">Природа</a></li>
+                        <li><a href="#culture">Культура</a></li>
+                        <li><a href="#history">История</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="mailto:info@qazaq.space">info@qazaq.space</a></li>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Сотрудничество</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Qazaq.space. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switcher
+        function switchLang(lang) {
+            // В будущем здесь будет логика переключения языков
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            console.log('Switching to language:', lang);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
